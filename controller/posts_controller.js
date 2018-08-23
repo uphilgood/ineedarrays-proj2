@@ -1,9 +1,9 @@
 let express = require("express");
-
+let community = require("../model/posts.js");
 
 let router = express.Router();
-// Import the model (cat.js) to use its database functions.
-let community = require("../model/posts.js");
+
+
 
 router.get("/", function(req, res) {
     community.getAll(function(data) {
@@ -14,7 +14,7 @@ router.get("/", function(req, res) {
   });
   
 
-  
+   
   // Export routes for server.js to use.
   module.exports = router;
   
