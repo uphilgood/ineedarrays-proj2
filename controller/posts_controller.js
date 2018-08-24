@@ -9,7 +9,7 @@ router.get("/", function(req, res) {
     community.getAll(function(data) {
     
       console.log(data);
-      res.render("index", {data: data});
+      res.render("input", {data: data});
     });
   });
   
