@@ -24,13 +24,12 @@ router.get("/", function(req, res) {
   router.post("/api/add_product/", function(req, res) {
   // console.log(req.body.title)
   // console.log(req.body.body)
-    community.postDb.upsert(
-      {
-        post_title: req.body.title,
-        post_body: req.body.body
-      }).then(function(data){
-        res.redirect("/")})
-    
+  let postingTitle = req.body.title
+  let postingBody = req.body.body
+community.postings.addNewPost(postingTitle, postingBody, function(data) {
+  res.json(data)
+  // res.redirect("/")
+})
   
   })
  

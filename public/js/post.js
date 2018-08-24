@@ -22,6 +22,7 @@ $.ajax("/api/add_product/", {
         //$("#myquote").val(data.quote);
 
         // location.reload();
+       
     });
 })
 })
