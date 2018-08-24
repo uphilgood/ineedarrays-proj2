@@ -1,0 +1,29 @@
+
+
+<div class="container">
+  <h2>Create Post</h2>
+  <p>Fill in the following fields to post to Gregslist</p>
+  <form action="/action_page.php">
+    <div class="form-group">
+      <label for="post_title">Title:</label>
+      <input type="text" class="form-control" id="post_title" >
+    </div>
+ <div class="form-group">
+  <label for="post_body">Description:</label>
+  <textarea class="form-control" rows="5" id="post_body"></textarea>
+</div>
+<form>
+     <label for="community_name">Community:</label>
+     <br>
+  <select name="community_name" class="custom-select-sm">
+    <option selected>---Select a Community---</option>
+    <option value=1>Cars</option>
+    <option value=2>Electronics</option>
+    <option value=3>Housing</option>
+     <option value=4>Jobs</option>
+  </select>
+</form>
+   <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

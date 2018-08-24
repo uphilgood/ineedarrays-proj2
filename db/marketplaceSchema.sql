@@ -1,8 +1,8 @@
-drop database marketplace_db;
+
 CREATE DATABASE marketplace_db;
 USE marketplace_db;
 
--- Create the table actors.
+
 CREATE TABLE posts (
   id int AUTO_INCREMENT NOT NULL,
   post_title varchar(50) NOT NULL,
