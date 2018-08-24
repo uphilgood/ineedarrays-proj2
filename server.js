@@ -4,9 +4,9 @@ let bodyParser = require("body-parser");
 let exphbs = require("express-handlebars");
 let app = express();
 let post_controller = require("./controller/posts_controller")
-let postDb = require("./model/posts.js");
-let communityDb = require("./model/posts.js");
-let community = require("./model/posts.js");
+let postDb = require("./model/postsDB.js");
+let communityDb = require("./model/postsDB.js");
+let community = require("./model/postsDB.js");
 let PORT = process.env.PORT || 8080;
 
 app.use(express.static("public"))

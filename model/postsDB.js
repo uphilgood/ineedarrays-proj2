@@ -72,7 +72,9 @@ let community = {
 postDb.sync();
 communityDb.sync();
 
-module.exports = postDb;
-module.exports = communityDb;
-module.exports = community;
+module.exports = {
+    postDb: postDb,
+    communityDb: communityDb,
+    community: community
+};
 // module.exports = orm
