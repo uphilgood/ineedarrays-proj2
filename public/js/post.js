@@ -9,6 +9,7 @@ $("#submitCreate").on("click", function() {
 
 }
 
+console.log(postInfo)
 
 $.ajax("/api/add_product/", {
     type: "POST",
@@ -16,12 +17,7 @@ $.ajax("/api/add_product/", {
 
 }).then(
     function(data){
-      //update textbox with value returned from the database
-     
-       // $("#myauthor").val(data.author);
-        //$("#myquote").val(data.quote);
-
-        // location.reload();
+        location.replace("/")
        
     });
 })

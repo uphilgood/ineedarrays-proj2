@@ -26,7 +26,8 @@ router.get("/", function(req, res) {
   // console.log(req.body.body)
   let postingTitle = req.body.title
   let postingBody = req.body.body
-community.postings.addNewPost(postingTitle, postingBody, function(data) {
+  let communityID = req.body.community
+community.postings.addNewPost(postingTitle, postingBody, communityID, function(data) {
   res.json(data)
   // res.redirect("/")
 })

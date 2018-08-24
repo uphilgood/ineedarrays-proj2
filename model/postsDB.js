@@ -35,10 +35,12 @@ let community = {
 }
 
 let postings = {
-    addNewPost: (title, body, callback) => {
+    addNewPost: (title, body, community, callback) => {
         postDb.upsert({
             post_title: title,
-            post_body: body
+            post_body: body,
+            post_sold: 0,
+            community_id: community
         }).then(data =>
             callback(data)
         )
