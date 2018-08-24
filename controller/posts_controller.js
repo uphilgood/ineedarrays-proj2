@@ -7,11 +7,16 @@ let router = express.Router();
 
 router.get("/", function(req, res) {
     community.community.getAll(function(data) {
-    
-
-
-      // console.log(data);
+  
       res.render("index", {data: data});
+
+    });
+  });
+
+  router.get("/input", function(req, res) {
+    community.community.getAll(function(data) {
+  
+      res.render("input", {data: data});
 
     });
   });
@@ -24,7 +29,7 @@ router.get("/", function(req, res) {
         post_title: req.body.title,
         post_body: req.body.body
       }).then(function(data){
-    console.log(data)})
+        res.redirect("/")})
     
   
   })
