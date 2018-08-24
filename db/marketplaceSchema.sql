@@ -1,9 +1,10 @@
+
 CREATE DATABASE marketplace_db;
 USE marketplace_db;
 
 
 CREATE TABLE posts (
-  id int AUTO_INCREMENT,
+  id int AUTO_INCREMENT NOT NULL,
   post_title varchar(50) NOT NULL,
   post_body varchar(500) NOT NULL,
   post_sold boolean, 
