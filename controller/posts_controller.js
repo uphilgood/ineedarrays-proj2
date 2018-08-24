@@ -7,11 +7,16 @@ let router = express.Router();
 
 router.get("/", function(req, res) {
     community.community.getAll(function(data) {
-    
-
-
-      // console.log(data);
+  
       res.render("index", {data: data});
+
+    });
+  });
+
+  router.get("/input", function(req, res) {
+    community.community.getAll(function(data) {
+  
+      res.render("input", {data: data});
 
     });
   });
