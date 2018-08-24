@@ -21,7 +21,7 @@ router.get("/", function(req, res) {
         post_title: req.body.title,
         post_body: req.body.body
       }).then(function(data){
-    console.log(data)})
+        res.redirect("/")})
     
   
   })
