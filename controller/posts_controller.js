@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
 
       // console.log(data);
       res.render("index", {data: data});
-
+      res.render("cars");
     });
   });
 
@@ -27,8 +27,9 @@ router.get("/", function(req, res) {
     console.log(data)})
     
   
-  })
- 
+  });
+
+
 
 
   
