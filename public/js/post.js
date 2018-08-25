@@ -39,7 +39,7 @@ $(function () {
 
         }).then(function(data){
             
-            location.replace("/")
+            location.replace("/index")
             });
     })
 

@@ -8,6 +8,16 @@ let router = express.Router();
 router.get("/", function (req, res) {
   community.community.getAll(function (data) {
 
+    res.render("login", {
+      data: data
+    });
+
+  });
+});
+
+router.get("/index", function (req, res) {
+  community.community.getAll(function (data) {
+
     res.render("index", {
       data: data
     });
