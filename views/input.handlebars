@@ -3,7 +3,7 @@
 <div class="container">
   <h2>Create Post</h2>
   <p>Fill in the following fields to post to Gregslist</p>
-  <form action="/action_page.php">
+  <form>
     <div class="form-group">
       <label for="post_title">Title:</label>
       <input type="text" class="form-control" id="post_title" >
@@ -15,7 +15,7 @@
 <form>
      <label for="community_name">Community:</label>
      <br>
-  <select name="community_name" class="custom-select-sm">
+  <select id="commSelection" name="community_name" class="custom-select-sm">
     <option selected>---Select a Community---</option>
     <option value=1>Cars</option>
     <option value=2>Electronics</option>
@@ -24,6 +24,21 @@
   </select>
 </form>
    <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button id="submitCreate" type="submit" class="btn btn-primary">Submit</button>
   </form>
+
+{{!-- <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">username</label>
+    <input type="email" class="form-control" id="newUsername" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="thePassword" placeholder="Password">
+  </div>
+  <button id="createUser" class="btn btn-primary">Submit</button>
+</form> --}}
+
+
 </div>
