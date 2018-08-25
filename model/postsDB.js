@@ -23,6 +23,26 @@ let postDb = sequelize.define("posts", {
     timestamps: false
 })
 
+let userDb = sequelize.define("user",
+{
+  id:{
+    type: Sequelize.UUID,
+    primaryKey: true,
+    allowNull: false,
+    defaultValue: Sequelize.UUIDV4
+},
+    username: {
+      type: Sequelize.STRING
+    },
+    password: {
+      type: Sequelize.STRING
+    }
+  },
+  { 
+      freezeTableName: true,
+    timestamps: false
+  });
+
 let community = {
     getAll: callback => {
         sequelize.query("select p.post_title, p.post_body, c.community_name from posts p right join community c on c.community_id = p.community_id order by c.community_name", {
@@ -30,7 +50,6 @@ let community = {
             })
             .then(data =>
                 callback(data))
-
     }
 }
 
@@ -44,6 +63,29 @@ let postings = {
         }).then(data =>
             callback(data)
         )
+    }
+}
+
+let users = {
+    addUser: (username, hash, callback) => {
+        userDb.create({
+        username: username,
+        password: hash
+      }).then(function (data) {
+        callback(data)
+      }).catch(function (err) {
+        console.log(err);
+      })
+    },
+
+    login: (username, callback) => {
+        userDb.findOne({
+            where: {
+              username: username
+            }
+          }).then(function (data) {
+              callback(data)
+          })
     }
 }
 
