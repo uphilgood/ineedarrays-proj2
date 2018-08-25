@@ -25,12 +25,7 @@ let postDb = sequelize.define("posts", {
 
 let userDb = sequelize.define("user",
 {
-  id:{
-    type: Sequelize.UUID,
-    primaryKey: true,
-    allowNull: false,
-    defaultValue: Sequelize.UUIDV4
-},
+
     username: {
       type: Sequelize.STRING
     },
@@ -133,6 +128,7 @@ module.exports = {
     postDb: postDb,
     communityDb: communityDb,
     community: community,
-    postings: postings
+    postings: postings,
+    users: users
 };
 // module.exports = orm

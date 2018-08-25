@@ -37,9 +37,9 @@ $(function () {
             type: "POST",
             data: postInfo
 
-        }).then(function(){
+        }).then(function(data){
             
-
+            location.replace("/")
             });
     })
 
@@ -58,8 +58,8 @@ $(function () {
             type: "POST",
             data: postInfo
 
-        }).then(function(){
-            
+        }).then(function(data){
+            location.replace("/")
 
             });
     })

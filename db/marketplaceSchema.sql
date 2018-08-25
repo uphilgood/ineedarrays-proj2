@@ -21,6 +21,6 @@ CREATE TABLE community (
 CREATE TABLE user (
   id int AUTO_INCREMENT NOT NULL,
   username varchar(50) NOT NULL,
-  password varchar(50) NOT NULL,
+  password varchar(1000) NOT NULL,
   PRIMARY KEY(id)
 );
