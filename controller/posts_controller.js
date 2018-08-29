@@ -4,6 +4,8 @@ var createHash = require('create-hash');
 var passwordHash = require('password-hash');
 const bcrypt = require('bcrypt');
 let router = express.Router();
+const saltRound = 10
+let hashSalt 
 
 router.get("/", function (req, res) {
   community.community.getAll(function (data) {
@@ -51,14 +53,18 @@ router.post("/api/add_product/", function (req, res) {
 //login user
 router.post("/loginuser", function (req, res) {
 
-  community.users.login(req.body.password, function(data) {
+  community.users.login(req.body.username, function(data) {
     let newPassword = data.password
-    bcrypt.hash(newPassword.toString(), 10, function (err, hash) {
-      bcrypt.compare(newPassword, newPassword, function (err, res) {
-        if (res) {
-          res.json("Correct Password");
+    console.log(newPassword)
+    bcrypt.hash(req.body.password.toString(), hashSalt, function (err, hash) {
+      console.log(hash)
+      bcrypt.compare(hash, newPassword, function (err, resp) {
+        if (resp) {
+          console.log("response")
+          res.json(resp);
         } else {
-          res.json("In Correct Password");
+          console.log(err)
+          res.json(err);
         }
       });
     })
@@ -70,12 +76,16 @@ router.post("/loginuser", function (req, res) {
 router.post("/createuser", function (req, res) {
 
   //create hash
-
-  bcrypt.hash(req.body.password.toString(), 10, function (err, hash) {
+bcrypt.genSalt(saltRound, function (err, salt) {
+  bcrypt.hash(req.body.password.toString(), salt, function (err, hash) {
+hashSalt = salt
     community.users.addUser(req.body.username, hash, function (data) {
       res.json(data)
     })
   });
+
+})
+  
   // var hashedPassword = passwordHash.generate(req.body.password);
 
 })
