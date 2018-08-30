@@ -23,20 +23,18 @@ let postDb = sequelize.define("posts", {
     timestamps: false
 })
 
-let userDb = sequelize.define("user",
-{
+let userDb = sequelize.define("user", {
 
     username: {
-      type: Sequelize.STRING
+        type: Sequelize.STRING
     },
     password: {
-      type: Sequelize.STRING
+        type: Sequelize.STRING
     }
-  },
-  { 
-      freezeTableName: true,
+}, {
+    freezeTableName: true,
     timestamps: false
-  });
+});
 
 let community = {
     getAll: callback => {
@@ -63,24 +61,36 @@ let postings = {
 
 let users = {
     addUser: (username, hash, callback) => {
-        userDb.create({
-        username: username,
-        password: hash
-      }).then(function (data) {
-        callback(data)
-      }).catch(function (err) {
-        console.log(err);
-      })
+        userDb.findOne({
+            where: {
+                username: username
+            }
+        }).then(function (name) {
+            if (name) {
+                callback("fail")
+            } else {
+                userDb.create({
+                    username: username,
+                    password: hash
+                }).then(function (data) {
+                    callback(data)
+                }).catch(function (err) {
+                    console.log(err);
+                })
+            }
+        })
+            
+        
     },
 
     login: (username, callback) => {
         userDb.findOne({
             where: {
-              username: username
+                username: username
             }
-          }).then(function (data) {
-              callback(data)
-          })
+        }).then(function (data) {
+            callback(data)
+        })
     }
 }
 

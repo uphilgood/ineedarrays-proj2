@@ -38,17 +38,20 @@ $(function () {
             data: postInfo
 
         }).then(function(data){
-            
+            if (data === "fail") {
+                alert('user exists')
+            } else {
             location.replace("/index")
+            }
             });
     })
 
-    $("#login").on("click", function () {
+    $("#loginexistinguser").on("click", function () {
 
         event.preventDefault();
         let postInfo = {
-            username: $("#newUsername").val().trim(),
-            password: $("#thePassword").val()
+            username: $("#useremail").val().trim(),
+            password: $("#userpassword").val()
 
         }
 
@@ -59,7 +62,7 @@ $(function () {
             data: postInfo
 
         }).then(function(data){
-            location.replace("/")
+            location.replace("/index")
 
             });
     })
