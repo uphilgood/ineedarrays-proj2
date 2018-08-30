@@ -4,21 +4,35 @@
     
 <br/>
     <div class="col-md-12" >
-        <h1 style="color: white">Communities</h1>
+        <h1 style="color: white">Cars</h1>
     <div class="card" style="width: 80rem;">
-      {{#each data}}
+      {{#each data.cars}}
   <ul class="list-group list-group-flush">
 
     
-    {{this.community_name}} 
+    
       
     <li class="list-group-item">{{this.post_title}} </li>
     <li class="list-group-item">{{this.post_body}} </li>
   
   </ul>
- 
-  {{/each}}
+ {{/each}}
+
   </div>
 </div> 
 
 
+  <div class="col-md-12" >
+        <h1 style="color: white">Electronics</h1>
+    <div class="card" style="width: 80rem;">
+      {{#each data.electronics}}
+  <ul class="list-group list-group-flush">
+
+    <li class="list-group-item">{{this.post_title}} </li>
+    <li class="list-group-item">{{this.post_body}} </li>
+  
+  </ul>
+ 
+{{/each}}
+  </div>
+</div> 

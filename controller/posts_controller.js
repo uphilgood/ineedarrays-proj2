@@ -5,7 +5,6 @@ var passwordHash = require('password-hash');
 const bcrypt = require('bcrypt');
 let router = express.Router();
 const saltRound = 10
-let hashSalt
 
 router.get("/", function (req, res) {
   community.community.getAll(function (data) {
@@ -16,11 +15,10 @@ router.get("/", function (req, res) {
 });
 
 router.get("/index", function (req, res) {
-  community.community.getAll(function (data) {
+  community.community.getAll(function (cars, electronics, housing, jobs) {
     res.render("index", {
-      data: data
+      data: {cars, electronics, housing, jobs}
     });
-
   });
 });
 
@@ -34,8 +32,6 @@ router.get("/input", function (req, res) {
 });
 
 router.post("/api/add_product/", function (req, res) {
-  // console.log(req.body.title)
-  // console.log(req.body.body)
   let postingTitle = req.body.title
   let postingBody = req.body.body
   let communityID = req.body.community
@@ -44,28 +40,23 @@ router.post("/api/add_product/", function (req, res) {
   })
 })
 
-
 //login user
-router.post("/loginuser", function (req, res) {
-  community.users.login(req.body.username, function (data) {
+router.post("/loginuser",  (req, res) => {
+  community.users.login(req.body.username, data => {
     let newPassword = data.password
-    console.log(newPassword)
-    bcrypt.compare(req.body.password, newPassword).then(function (resp) {
-      // res == true
-      console.log(resp)
+    bcrypt.compare(req.body.password, newPassword).then(resp => {
       if (resp) {
         res.json(resp)
-      }
+      } 
     });
   })
 });
 
-
 //sign up user
-router.post("/createuser", function (req, res) {
+router.post("/createuser", (req, res) => {
   //create hash
-  bcrypt.hash(req.body.password, saltRound, function (err, hash) {
-    community.users.addUser(req.body.username, hash, function (data) {
+  bcrypt.hash(req.body.password, saltRound, (err, hash) => {
+    community.users.addUser(req.body.username, hash, data => {
       res.json(data)
     })
   });
