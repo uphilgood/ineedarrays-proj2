@@ -38,12 +38,25 @@ let userDb = sequelize.define("user", {
 
 let community = {
     getAll: callback => {
-        sequelize.query("select p.post_title, p.post_body, c.community_name from posts p right join community c on c.community_id = p.community_id order by c.community_name", {
+        sequelize.query("select p.post_title, p.post_body, c.community_name from posts p right join community c on c.community_id = p.community_id where c.community_name = 'Cars'", {
                 type: sequelize.QueryTypes.SELECT
             })
-            .then(data =>
-                callback(data))
-    }
+            .then(cars =>
+                sequelize.query("select p.post_title, p.post_body, c.community_name from posts p right join community c on c.community_id = p.community_id where c.community_name = 'Electronics'", {
+                    type: sequelize.QueryTypes.SELECT
+                }).then(electronics => {
+                    sequelize.query("select p.post_title, p.post_body, c.community_name from posts p right join community c on c.community_id = p.community_id where c.community_name = 'Housing'", {
+                        type: sequelize.QueryTypes.SELECT
+                    }).then(housing => {
+                        sequelize.query("select p.post_title, p.post_body, c.community_name from posts p right join community c on c.community_id = p.community_id where c.community_name = 'Jobs'", {
+                            type: sequelize.QueryTypes.SELECT
+                        }).then(jobs => {
+                            callback(cars, electronics, housing, jobs)
+                        })
+                    })
+                })  
+                
+            )}
 }
 
 let postings = {
