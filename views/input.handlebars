@@ -1,103 +1,52 @@
 
-<div class="container">
-<nav class="navbar navbar-expand-sm bg-dark">
 
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="/">Login</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="input">POST</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Support</a>
-    </li>
-    {{!-- drop-down portion --}}
-        <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Communities
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="cars">Cars</a>
-        <a class="dropdown-item" href="electronics">Electronics</a>
-        <a class="dropdown-item" href="jobs">Housing</a>
-        <a class="dropdown-item" href="housing">Jobs</a>
-      </div>
-    </li>
-  </ul>
+<div id="postContainer" class="container">
+  <h2 id="postHeader">Create Post</h2>
+  <p id="postHeader2">Fill in the following fields to post to Gregslist</p>
+ <div class="row justify-content-center">
+  <form id="postForm">
+   <div  class="form-group">
+      <label for="post_email">Email:</label>
+      <input type="email" class="form-control" id="post_email" placeholder="example@email.com" >
+    </div>
 
-</nav>
-</div>
-<div class="container bg bg-light my-3 py-3 rounded">
-  <h2>Create Post</h2>
-  <p>Fill in the following fields to post to Gregslist</p>
-
-  <div class="container">
-<nav class="navbar navbar-expand-sm bg-dark">
-
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="/">Login</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="index">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="input">POST</a>
-    </li>
-    {{!-- drop-down portion --}}
-        <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Communities
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="cars">Cars</a>
-        <a class="dropdown-item" href="electronics">Electronics</a>
-        <a class="dropdown-item" href="jobs">Housing</a>
-        <a class="dropdown-item" href="housing">Jobs</a>
-      </div>
-    </li>
-  </ul>
-
-</nav>
-</div>
-
-  <form>
-    <div class="form-group">
+    <div  class="form-group">
       <label for="post_title">Title:</label>
-      <input type="text" class="form-control" id="post_title" >
+      <input type="text" class="form-control" placeholder="New Post" id="post_title" >
     </div>
  <div class="form-group">
   <label for="post_body">Description:</label>
-  <textarea class="form-control" rows="5" id="post_body"></textarea>
+  <textarea class="form-control" rows="2" id="post_body" placeholder="Description of post"></textarea>
 </div>
-<form>
      <label for="community_name">Community:</label>
      <br>
-  <select id="commSelection" name="community_name" class="custom-select-sm">
+ 
+ <div class = "form-group">
+ <select id="commSelection" name="community_name" class="custom-select">
     <option selected>---Select a Community---</option>
     <option value=1>Cars</option>
     <option value=2>Electronics</option>
     <option value=3>Housing</option>
      <option value=4>Jobs</option>
   </select>
-</form>
-   <br>
-    <button id="submitCreate" type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  </div>
 
-{{!-- <form>
+    <div  class="form-group">
+      <label for="post_url">Image URL:</label>
+      <input type="text" class="form-control" id="post_url" placeholder="Accepted file types: JPEG, PNG, GIF">
+    </div>
+
   <div class="form-group">
-    <label for="exampleInputEmail1">username</label>
-    <input type="email" class="form-control" id="newUsername" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="thePassword" placeholder="Password">
-  </div>
-  <button id="createUser" class="btn btn-primary">Submit</button>
-</form> --}}
+ <button id="submitCreate" type="submit" class="btn btn-primary btn-block">SUBMIT</button>
+</div>
+
+ </div>
+  
+
+
+
+   
+  </form>
 
 
 </div>

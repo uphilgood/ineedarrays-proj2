@@ -5,6 +5,8 @@ $(function () {
         let postInfo = {
             title: $("#post_title").val().trim(),
             body: $("#post_body").val().trim(),
+            // email:
+            // url: 
             community: $("#commSelection").val()
 
         }
@@ -15,10 +17,12 @@ $(function () {
             type: "POST",
             data: postInfo
 
-        }).then(
-            function (data) {
+        }).then(function (data) {
+                if (data === "no user found") {
+                    alert("You are not registered, please register before posting a listing!")
+                } else {
                 location.replace("/index")
-
+                }
             });
     })
 

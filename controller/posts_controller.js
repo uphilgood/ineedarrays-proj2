@@ -34,15 +34,26 @@ router.get("/input", function (req, res) {
   });
 });
 
+
 // add a post
 router.post("/api/add_product/", function (req, res) {
   let postingTitle = req.body.title
   let postingBody = req.body.body
+  let postingUser = req.body.email
+  let postingUrl = req.body.url
   let communityID = req.body.community
-  community.postings.addNewPost(postingTitle, postingBody, communityID, function (data) {
-    res.json(data)
+  community.users.findUser(postingUser, function(user) {
+    if (user) {
+      community.postings.addNewPost(postingTitle, postingBody, communityID, function (data) {
+        res.json(data)
+      })
+    } else {
+      res.json("no user found")
+    }
   })
 })
+
+  
 
 //login user
 router.post("/loginuser",  (req, res) => {

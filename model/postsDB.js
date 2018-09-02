@@ -78,6 +78,15 @@ let postings = {
 }
 
 let users = {
+    findUser: (username, callback) => { 
+        userDb.findOne({
+        where: {
+            username: username
+        }
+    }).then((user) => {
+        callback(user)
+    })
+},
     addUser: (username, hash, callback) => {
         userDb.findOne({
             where: {
