@@ -8,7 +8,7 @@ body{
     margin-top: 100px;
 }
 
-#gregsTitle {
+#gregsTitle, #indexTitle {
     font-family: 'Acme', sans-serif;
     color: #c1d4ee;
     padding-top: 20px;
