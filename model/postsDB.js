@@ -16,7 +16,8 @@ let communityDb = sequelize.define("community", {
 let postDb = sequelize.define("posts", {
     post_title: Sequelize.STRING,
     post_body: Sequelize.STRING,
-    post_sold: Sequelize.BOOLEAN,
+    post_email: Sequelize.STRING,
+    post_image_url: Sequelize.STRING,
     community_id: Sequelize.INTEGER,
 }, {
     freezeTableName: true,
@@ -69,7 +70,6 @@ let postings = {
         postDb.upsert({
             post_title: title,
             post_body: body,
-            post_sold: 0,
             community_id: community
         }).then(data =>
             callback(data)
@@ -78,6 +78,15 @@ let postings = {
 }
 
 let users = {
+    findUser: (username, callback) => { 
+        userDb.findOne({
+        where: {
+            username: username
+        }
+    }).then((user) => {
+        callback(user)
+    })
+},
     addUser: (username, hash, callback) => {
         userDb.findOne({
             where: {

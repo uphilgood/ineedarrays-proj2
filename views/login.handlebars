@@ -1,59 +1,80 @@
-{{!-- <h1 class="d-inline p-2 bg-primary text-white">Create A Login</h1>
-
-<form class="update-form">
-
-    <textarea id="newUser" rows="1" cols="40" placeholder="Username"></textarea>
-    <br/>
-    
-    <textarea id="userPassword" rows="1" cols="40" placeholder="Password"></textarea>
-
-    <button class="submitLogin">Create Login</button>
-</form> --}}
-
+<div id="loginBR" class="container">
+        <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                        <div id="gregsHeader">
+                                <h1 id="gregsTitle">Gregslist</h1>
+                                <p id="sub">-- the most exclusive marketplace in the galaxy --</p>
+                                
+                                
+                                </div>
+                </div>
+                <div class="col-sm-3"></div>
+              </div>
+        <div class="row">
+        <div class="col-sm-3">.</div>
+        <div class="col-sm-6">
+                <div class="mainPageButtons">
+                     <div class="row">
+                        <div class="col-sm-4"></div>
+                             <div class="col-sm-2">
+                                        <button type="button" class="btn btn-primary"onclick="document.getElementById('login').style.display='block'"> SIGN IN </button>
+                             </div>
+                             <div class="col-sm-2">
+                                        <button type="button" onclick="document.getElementById('ulog').style.display='block'" class="btn btn-secondary">REGISTER</button>
+                                </div>
+                        <div class="col-sm-4"></div>
+                     </div>
+                        
+                        </div>
+        </div>
+        <div class="col-sm-3"></div>
+        </div>
+              
+</div>
 <!-- Button to open the modal login form -->
-<button onclick="document.getElementById('ulog').style.display='block'">Login</button>
-
 <!-- The Modal -->
 <div id="ulog" class="modal">
   <span onclick="document.getElementById('ulog').style.display='none'" 
 class="close" title="Close Modal">&times;</span>
-
   <!-- Modal Content -->
-  <form class="modal-content animate" method="POST">
+  <form id="loginForm" class="modal-content animate" method="POST">
     <div class="imgcontainer">
-      <img src="" alt="Avatar" class="avatar">
+      {{!-- <img src="" alt="Avatar" class="avatar"> --}}
     </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container">
-      <button type="button" onclick="document.getElementById('ulog').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="">password?</a></span>
-    </div>
+<form  >
+  <div   class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="newUsername" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="thePassword" placeholder="Password">
+  </div>
+  <button id="createUser" class="btn btn-primary">SUBMIT</button>
+</form>
   </form>
 </div>
-
-
-
-<script>
-// Get the modal
-var modal = document.getElementById('ulog');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
+<!-- The Modal -->
+<div id="login" class="modal">
+  <span onclick="document.getElementById('login').style.display='none'" 
+class="close" title="Close Modal">&times;</span>
+  <!-- Modal Content -->
+  <form id="loginForm" class="modal-content animate" method="POST">
+    <div class="imgcontainer">
+      {{!-- <img src="" alt="Avatar" class="avatar"> --}}
+    </div>
+<form >
+  <div   class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="useremail" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="userpassword" placeholder="Password">
+  </div>
+  <button id="loginexistinguser" class="btn btn-primary">SUBMIT</button>
+</form>
+  </form>
+</div>
