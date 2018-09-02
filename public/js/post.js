@@ -5,6 +5,8 @@ $(function () {
         let postInfo = {
             title: $("#post_title").val().trim(),
             body: $("#post_body").val().trim(),
+            // email:
+            // url: 
             community: $("#commSelection").val()
 
         }
@@ -15,10 +17,12 @@ $(function () {
             type: "POST",
             data: postInfo
 
-        }).then(
-            function (data) {
-                location.replace("/")
-
+        }).then(function (data) {
+                if (data === "no user found") {
+                    alert("You are not registered, please register before posting a listing!")
+                } else {
+                location.replace("/index")
+                }
             });
     })
 
@@ -64,6 +68,19 @@ $(function () {
         }).then(function(data){
             location.replace("/index")
 
+            });
+    })
+
+    $(".community").on("click", function(event) {
+        let communityId =  $(this).attr("id")
+        
+        console.log(communityId)
+        $.ajax("/community/" + communityId, {
+            type: "GET"
+
+        }).then(function(data){
+            console.log(data)
+            location.replace("/community/" + communityId)
             });
     })
 })

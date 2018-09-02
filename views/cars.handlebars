@@ -1,45 +1,57 @@
-{{!-- <h1 class="d-inline p-2 bg-primary text-white">Create A Login</h1>
+{{#each data}}
+<h1 class="display-4" style="text-align: center" style="color: #ffffff" id="#">{{this.community_name}}</h1>
+{{/each}}
+<div class="container">
+  <div class="col-md-12">
+<nav class="navbar navbar-expand-sm bg-dark">
 
-<form class="update-form">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/">Login</a>
+    </li>
+        <li class="nav-item">
+      <a class="nav-link" href="index">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="input">POST</a>
+    </li>
+    {{!-- drop-down portion --}}
+        <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Communities
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="cars">Cars</a>
+        <a class="dropdown-item" href="electronics">Electronics</a>
+        <a class="dropdown-item" href="jobs">Housing</a>
+        <a class="dropdown-item" href="housing">Jobs</a>
+      </div>
+    </li>
+  </ul>
 
-    <textarea id="newUser" rows="1" cols="40" placeholder="Username"></textarea>
-    <br/>
-    
-    <textarea id="userPassword" rows="1" cols="40" placeholder="Password"></textarea>
+</nav>
+</div>
+</div>
 
-    <button class="submitLogin">Create Login</button>
-</form> --}}
+<br/>
 
-<!-- Button to open the modal login form -->
-<button onclick="document.getElementById('ulog').style.display='block'">Login</button>
-
-<!-- The Modal -->
-<div id="ulog" class="modal">
-  <span onclick="document.getElementById('ulog').style.display='none'" 
-class="close" title="Close Modal">&times;</span>
-
-  <!-- Modal Content -->
-  <form class="modal-content animate" method="POST">
-    <div class="imgcontainer">
-      <img src="" alt="Avatar" class="avatar">
+ <div class="container">
+   <div class="col-md-12">
+{{#each data}}
+     <div class="card-deck">
+  <div class="card">
+    <ul class="list-group list-group-flush">
+    <img class="card-img-top" src="{{this.post_image_url}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{this.post_title}}</h5>
+      <small class="text-muted">
+      <p class="card-text">{{this.post_body}}</p>
+      </small>
+      <p class="card-text"><small class="text-muted">Click Count: </small></p>
+      <a id="#" class="btn btn-primary community">Contact Seller</a>
     </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container">
-      <button type="button" onclick="document.getElementById('ulog').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="">password?</a></span>
-    </div>
-  </form>
+    </ul>
+  </div>
+</div>
+{{/each}}
 </div>

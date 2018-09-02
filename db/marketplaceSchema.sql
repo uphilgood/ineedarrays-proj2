@@ -7,7 +7,8 @@ CREATE TABLE posts (
   id int AUTO_INCREMENT NOT NULL,
   post_title varchar(50) NOT NULL,
   post_body varchar(500) NOT NULL,
-  post_sold boolean, 
+  post_email varchar(255) NOT NULL,
+  post_image_url varchar(1000) NULL,
   community_id int(10),
   PRIMARY KEY(id)
 );

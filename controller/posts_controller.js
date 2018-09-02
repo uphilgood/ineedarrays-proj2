@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 let router = express.Router();
 const saltRound = 10
 
+//login page
 router.get("/", function (req, res) {
   community.community.getAll(function (data) {
     res.render("login", {
@@ -14,6 +15,7 @@ router.get("/", function (req, res) {
   });
 });
 
+//main page
 router.get("/index", function (req, res) {
   community.community.getAll(function (cars, electronics, housing, jobs) {
     res.render("index", {
@@ -22,6 +24,7 @@ router.get("/index", function (req, res) {
   });
 });
 
+//new post page
 router.get("/input", function (req, res) {
   community.community.getAll(function (data) {
     res.render("input", {
@@ -31,14 +34,26 @@ router.get("/input", function (req, res) {
   });
 });
 
+
+// add a post
 router.post("/api/add_product/", function (req, res) {
   let postingTitle = req.body.title
   let postingBody = req.body.body
+  let postingUser = req.body.email
+  let postingUrl = req.body.url
   let communityID = req.body.community
-  community.postings.addNewPost(postingTitle, postingBody, communityID, function (data) {
-    res.json(data)
+  community.users.findUser(postingUser, function(user) {
+    if (user) {
+      community.postings.addNewPost(postingTitle, postingBody, communityID, function (data) {
+        res.json(data)
+      })
+    } else {
+      res.json("no user found")
+    }
   })
 })
+
+  
 
 //login user
 router.post("/loginuser",  (req, res) => {
@@ -61,6 +76,16 @@ router.post("/createuser", (req, res) => {
     })
   });
 })
+
+//cars community
+router.get("/community/:id", function (req, res) {
+  community.community.getAllArticlesInCommunity(req.params.id, function (data) {
+    console.log(req.params.id)
+    res.render("cars", {
+      data: data
+    });
+  });
+});
 
 // Export routes for server.js to use.
 module.exports = router;
