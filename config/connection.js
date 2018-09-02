@@ -5,7 +5,7 @@ if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 } else {
-var sequelize = new Sequelize("marketplace_db", "root", "12345678", {
+var sequelize = new Sequelize("marketplace_db", "root", "Qaplzaml28!", {
   host: "localhost",
   port: 3306,
   dialect: "mysql",
@@ -18,3 +18,5 @@ var sequelize = new Sequelize("marketplace_db", "root", "12345678", {
 
 // Exports the connection for other files to use
 module.exports = sequelize;
+
+
