@@ -17,7 +17,7 @@ $(function () {
 
         }).then(
             function (data) {
-                location.replace("/")
+                location.replace("/index")
 
             });
     })
@@ -64,6 +64,19 @@ $(function () {
         }).then(function(data){
             location.replace("/index")
 
+            });
+    })
+
+    $(".community").on("click", function(event) {
+        let communityId =  $(this).attr("id")
+        
+        console.log(communityId)
+        $.ajax("/community/" + communityId, {
+            type: "GET"
+
+        }).then(function(data){
+            console.log(data)
+            location.replace("/community/" + communityId)
             });
     })
 })

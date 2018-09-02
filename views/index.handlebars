@@ -9,16 +9,18 @@
       {{#each data.cars}}
   <ul class="list-group list-group-flush">
 
-    
-    
       
     <li class="list-group-item">{{this.post_title}} </li>
     <li class="list-group-item">{{this.post_body}} </li>
-  
   </ul>
  {{/each}}
+   <button class="community" id="1">Go to all Cars</button>
 
   </div>
+  
+  {{!-- <button id="carsbutton"></button> --}}
+
+  
 </div> 
 
 
@@ -27,12 +29,39 @@
     <div class="card" style="width: 80rem;">
       {{#each data.electronics}}
   <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{this.post_title}} </li>
+    <li class="list-group-item">{{this.post_body}} </li>
+  </ul>
+{{/each}}
+<button class="community" id="2">Go to all Electronics</button>
+
+  </div>
+</div> 
+
+  <div class="col-md-12" >
+        <h1 style="color: white">Housing</h1>
+    <div class="card" style="width: 80rem;">
+      {{#each data.housing}}
+  <ul class="list-group list-group-flush">
 
     <li class="list-group-item">{{this.post_title}} </li>
     <li class="list-group-item">{{this.post_body}} </li>
-  
   </ul>
- 
 {{/each}}
+<button class="community" id="3">Go to all Housing</button>
+
+  </div>
+</div> 
+
+  <div class="col-md-12" >
+        <h1 style="color: white">Jobs</h1>
+    <div class="card" style="width: 80rem;">
+      {{#each data.jobs}}
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{this.post_title}} </li>
+    <li class="list-group-item">{{this.post_body}} </li>
+  </ul>
+{{/each}}
+<button class="community" id="4">Go to all Jobs</button>
   </div>
 </div> 
