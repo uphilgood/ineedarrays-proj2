@@ -30,5 +30,6 @@
     "sendmail": "^1.4.1",
     "sequelize": "^4.38.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "keywords": []
 }
