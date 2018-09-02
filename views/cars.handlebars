@@ -41,10 +41,12 @@
      <div class="card-deck">
   <div class="card">
     <ul class="list-group list-group-flush">
-    <img class="card-img-top" src="{{this.post_image_url}}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{this.post_title}}</h5>
       <small class="text-muted">
+        <div class="col-md-2">
+        <img class="card-img-top" src="{{this.post_image_url}}" alt="Card image cap">
+        </div>
       <p class="card-text">{{this.post_body}}</p>
       </small>
       <p class="card-text"><small class="text-muted">Click Count: </small></p>
