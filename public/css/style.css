@@ -42,3 +42,36 @@ body{
     align-self: center
 }
 
+#postHeader {
+    font-family: 'Acme', sans-serif;
+    color: #c1d4ee;
+    text-align: center;
+    padding-top: 25px;
+}
+
+#postHeader2 {
+   
+    color: #c1d4ee;
+    font-style: italic;
+  
+    font-size: 15px;
+    text-align: center;
+}
+
+#postContainer {
+    background-color:#000e1eE6;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+#postForm {
+    font-family: 'Acme', sans-serif;
+    color: #c1d4ee;
+    margin: 0 auto;
+ 
+  
+}
+
+#submitCreate {
+    margin-bottom: 15px;
+}
