@@ -17,3 +17,4 @@ var sequelize = new Sequelize("marketplace_db", "root", "12345678", {
 })};
 
 // Exports the connection for other files to use
+module.exports = sequelize;
