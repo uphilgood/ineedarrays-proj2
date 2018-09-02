@@ -1,7 +1,5 @@
-
-  <title>Cars</title>
-
 <div class="container">
+  <div class="col-md-12">
 <nav class="navbar navbar-expand-sm bg-dark">
 
   <ul class="navbar-nav">
@@ -30,22 +28,27 @@
 
 </nav>
 </div>
+</div>
 
 <br/>
 
  <div class="container">
    <div class="col-md-12">
-    <div class="card" style="width: 80rem;">
-      {{#each data}}
-  <ul class="list-group list-group-flush">
-
-    <li class="list-group-item">{{this.post_title}} </li>
-    <small class="text-muted">
-    <li class="list-group-item">{{this.post_body}} </li>
-    </small>
-  
-  </ul>
- 
-{{/each}}
+{{#each data}}
+     <div class="card-deck">
+  <div class="card">
+    <ul class="list-group list-group-flush">
+    <img class="card-img-top" src="{{this.post_url}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{this.post_title}}</h5>
+      <small class="text-muted">
+      <p class="card-text">{{this.post_body}}</p>
+      </small>
+      <p class="card-text"><small class="text-muted">Click Count: </small></p>
+      <a id="#" class="btn btn-primary community">Contact Seller</a>
+    </div>
+    </ul>
+  </div>
 </div>
+{{/each}}
 </div>
