@@ -6,7 +6,7 @@ INSERT INTO community (community_name) VALUES ('Housing');
 INSERT INTO community (community_name) VALUES ('Jobs');
 
 
-INSERT INTO posts (post_title, post_body, post_email, post_image_url, community_id) VALUES ('Toyota 4Runner For Sale!', 'I have a like new 2018 Toyota 4Runner for sale!  $34,000!  2 inch lift and off road tires included!', 'jon@test.com', 'https://s.aolcdn.com/dims-global/dims3/GLOB/legacy_thumbnail/788x525/quality/85/https://s.aolcdn.com/commerce/autodata/images/USC60TOS072F021001.jpg' 1);
+INSERT INTO posts (post_title, post_body, post_email, post_image_url, community_id) VALUES ('Toyota 4Runner For Sale!', 'I have a like new 2018 Toyota 4Runner for sale!  $34,000!  2 inch lift and off road tires included!', 'jon@test.com', 'https://s.aolcdn.com/dims-global/dims3/GLOB/legacy_thumbnail/788x525/quality/85/https://s.aolcdn.com/commerce/autodata/images/USC60TOS072F021001.jpg', 1);
 
 INSERT INTO posts (post_title, post_body, post_email, post_image_url, community_id) VALUES ('Microsoft XBOX One X', 'Used and abused, but NEEDS A HOME $100!', 'mike@yahoo.com', 'https://cdn.vox-cdn.com/thumbor/MtoMILchLDGo28wcKbegkcm0L9c=/0x0:950x623/1200x800/filters:focal(399x236:551x388)/cdn.vox-cdn.com/uploads/chorus_image/image/60988327/Xbox_One_X_Screenshot_05.0.jpg',2);
 
