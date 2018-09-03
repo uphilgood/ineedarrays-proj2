@@ -66,10 +66,12 @@ let community = {
 }
 
 let postings = {
-    addNewPost: (title, body, community, callback) => {
+    addNewPost: (title, body, email, url, community, callback) => {
         postDb.upsert({
             post_title: title,
             post_body: body,
+            post_email: email, 
+            post_image_url: url,
             community_id: community
         }).then(data =>
             callback(data)

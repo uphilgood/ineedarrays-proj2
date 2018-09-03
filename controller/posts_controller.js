@@ -5,10 +5,38 @@ var passwordHash = require('password-hash');
 const bcrypt = require('bcrypt');
 let router = express.Router();
 const saltRound = 10
+let nodemailer = require("nodemailer")
+
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'info.gregslist@gmail.com',
+    pass: 'ineedarrays2'
+  }
+});
+
+//send email
+router.post("/api/sendmail", (req, res) => {
+  var mailOptions = {
+    from: 'info.gregslist@gmail.com',
+    to: 'philgoodmusic@gmail.com',
+    subject: 'Sending Email using Node.js',
+    text: 'I am interested in this product!!'
+  };
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+  res.json("email sent")
+})
+
 
 //login page
-router.get("/", function (req, res) {
-  community.community.getAll(function (data) {
+router.get("/", (req, res) => {
+  community.community.getAll(data => {
     res.render("login", {
       data: data
     });
@@ -16,35 +44,39 @@ router.get("/", function (req, res) {
 });
 
 //main page
-router.get("/index", function (req, res) {
-  community.community.getAll(function (cars, electronics, housing, jobs) {
+router.get("/index", (req, res) => {
+  community.community.getAll((cars, electronics, housing, jobs) => {
     res.render("index", {
-      data: {cars, electronics, housing, jobs}
+      data: {
+        cars,
+        electronics,
+        housing,
+        jobs
+      }
     });
   });
 });
 
 //new post page
-router.get("/input", function (req, res) {
-  community.community.getAll(function (data) {
+router.get("/input", (req, res) => {
+  community.community.getAll(data => {
     res.render("input", {
       data: data
     });
-
   });
 });
 
-
 // add a post
-router.post("/api/add_product/", function (req, res) {
+router.post("/api/add_product/", (req, res) => {
   let postingTitle = req.body.title
   let postingBody = req.body.body
   let postingUser = req.body.email
   let postingUrl = req.body.url
   let communityID = req.body.community
-  community.users.findUser(postingUser, function(user) {
+  community.users.findUser(postingUser, user => {
     if (user) {
-      community.postings.addNewPost(postingTitle, postingBody, communityID, function (data) {
+      console.log(user)
+      community.postings.addNewPost(postingTitle, postingBody, postingUser, postingUrl, communityID, data => {
         res.json(data)
       })
     } else {
@@ -53,16 +85,14 @@ router.post("/api/add_product/", function (req, res) {
   })
 })
 
-  
-
 //login user
-router.post("/loginuser",  (req, res) => {
+router.post("/loginuser", (req, res) => {
   community.users.login(req.body.username, data => {
     let newPassword = data.password
     bcrypt.compare(req.body.password, newPassword).then(resp => {
       if (resp) {
         res.json(resp)
-      } 
+      }
     });
   })
 });
@@ -79,7 +109,7 @@ router.post("/createuser", (req, res) => {
 
 //cars community
 router.get("/community/:id", function (req, res) {
-  community.community.getAllArticlesInCommunity(req.params.id, function (data) {
+  community.community.getAllArticlesInCommunity(req.params.id, data => {
     console.log(req.params.id)
     res.render("cars", {
       data: data
