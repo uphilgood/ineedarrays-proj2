@@ -1,8 +1,7 @@
 {{#each data}}
 <h1 class="display-4" style="text-align: center" style="color: #ffffff" id="#">{{this.community_name}}</h1>
 {{/each}}
-<div class="container">
-  <div class="col-md-12">
+
 <nav class="navbar navbar-expand-sm bg-dark">
 
   <ul class="navbar-nav">
@@ -10,10 +9,10 @@
       <a class="nav-link" href="/">Login</a>
     </li>
         <li class="nav-item">
-      <a class="nav-link" href="index">Home</a>
+      <a class="nav-link" href="/index">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="input">POST</a>
+      <a class="nav-link" href="/input">POST</a>
     </li>
     {{!-- drop-down portion --}}
         <li class="nav-item dropdown">
@@ -21,17 +20,16 @@
         Communities
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="cars">Cars</a>
-        <a class="dropdown-item" href="electronics">Electronics</a>
-        <a class="dropdown-item" href="jobs">Housing</a>
-        <a class="dropdown-item" href="housing">Jobs</a>
+        <a class="dropdown-item" href="/community/1">Cars</a>
+        <a class="dropdown-item" href="/community/2">Electronics</a>
+        <a class="dropdown-item" href="/community/3">Housing</a>
+        <a class="dropdown-item" href="/community/4">Jobs</a>
       </div>
     </li>
   </ul>
 
 </nav>
-</div>
-</div>
+
 
 <br/>
 
@@ -41,10 +39,12 @@
      <div class="card-deck">
   <div class="card">
     <ul class="list-group list-group-flush">
-    <img class="card-img-top" src="{{this.post_image_url}}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{this.post_title}}</h5>
       <small class="text-muted">
+        <div class="col-md-2">
+        <img class="card-img-top" src="{{this.post_image_url}}" alt="Card image cap">
+        </div>
       <p class="card-text">{{this.post_body}}</p>
       </small>
       <p class="card-text"><small class="text-muted">Click Count: </small></p>
@@ -54,4 +54,6 @@
   </div>
 </div>
 {{/each}}
+</div>
+<br/>
 </div>
