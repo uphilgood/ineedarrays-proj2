@@ -23,10 +23,10 @@ require("dotenv").config();
 
 module.exports = {
   "development": {
-    "username": "root",
-    "password": "12345678",
-    "database": "marketplace_db",
-    "host": "localhost",
+    username: "root",
+    password: "12345678",
+    database: "marketplace_db",
+    host: "localhost",
     "dialect": "mysql"
   },
   "production": {
