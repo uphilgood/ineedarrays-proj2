@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/uphilgood/ineedarrays-proj2#readme",
   "dependencies": {
-    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "create-hash": "^1.2.0",
     "dotenv": "^6.0.0",
