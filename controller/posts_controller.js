@@ -117,5 +117,16 @@ router.get("/community/:id", function (req, res) {
   });
 });
 
+// delete a post
+
+router.delete("/deletepost/:id", function(req, res){
+  community.postings.deletePost(req.params.id,function(data) {
+    res.json(data)
+    
+  })});
+
+ 
+
+
 // Export routes for server.js to use.
 module.exports = router;
