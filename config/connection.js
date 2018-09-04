@@ -1,4 +1,6 @@
 var Sequelize = require("sequelize");
+require("dotenv").config();
+
 
 // Creates mySQL connection using Sequelize, the empty string in the third argument spot is our password.
 // if (process.env.JAWSDB_URL) {
@@ -21,10 +23,10 @@ var Sequelize = require("sequelize");
 
 module.exports = {
   "development": {
-    "username": process.env.MYSQL_USER,
-    "password": process.env.MYSQL_KEY,
-    "database": process.env.MYSQL_DBNAME,
-    "host": process.env.MYSQL_HOST,
+    "username": "root",
+    "password": "12345678",
+    "database": "marketplace_db",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
@@ -32,5 +34,7 @@ module.exports = {
     "dialect": "mysql"
   }
 }
+
+
 
 
