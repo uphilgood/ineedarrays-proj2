@@ -88,14 +88,20 @@ router.post("/api/add_product/", (req, res) => {
 //login user
 router.post("/loginuser", (req, res) => {
   community.users.login(req.body.username, data => {
+
     let newPassword = data.password
+
     bcrypt.compare(req.body.password, newPassword).then(resp => {
       if (resp) {
         res.json(resp)
       }
-    });
+    })
+  },errorFunction => {
+    res.json(errorFunction)
   })
-});
+})
+
+
 
 //sign up user
 router.post("/createuser", (req, res) => {
@@ -119,13 +125,14 @@ router.get("/community/:id", function (req, res) {
 
 // delete a post
 
-router.delete("/deletepost/:id", function(req, res){
-  community.postings.deletePost(req.params.id,function(data) {
+router.delete("/deletepost/:id", function (req, res) {
+  community.postings.deletePost(req.params.id, function (data) {
     res.json(data)
-    
-  })});
 
- 
+  })
+});
+
+
 
 
 // Export routes for server.js to use.
