@@ -84,8 +84,18 @@ let postings = {
         }).then(data =>
             callback(data)
         )
+    },
+    deletePost: (id, callback) => {
+        postDb.destroy({
+            where: {
+                id: id
+            }
+        })
+        callback();
     }
 }
+
+
 
 let users = {
     findUser: (username, callback) => { 
@@ -131,40 +141,6 @@ let users = {
     }
 }
 
-
-
-// let orm = {
-//     allCharacters: function (cb) {
-//         db.findAll({}).then(function (results) {
-//             cb(results)
-//         })
-//     },
-
-//     searchCharacter: function (name, cb) {
-//         db.findAll({
-//             where: {
-//                 routeName: name
-//             }
-//         }).then(function (results) {
-//             cb(results)
-//         })
-
-//     },
-
-//     addCharacter: function (character, cb) {
-//         var routeName = character.name.replace(/\s+/g, "").toLowerCase();
-//         console.log(routeName);
-//         db.upsert({
-//             routeName: routeName,
-//             name: character.name,
-//             role: character.name,
-//             age: character.age,
-//             forcePoints: character.forcePoints
-//         }).then(function (results) {
-//             cb(results)
-//         });
-//     }
-// }
 
 
 
