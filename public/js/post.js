@@ -53,8 +53,19 @@ $(function () {
             type: "POST",
             data: postInfo
         }).then(function (data) {
-            location.replace("/index")
-        });
+            console.log(data)
+            if (data){
+            location.replace("/index")}
+            else if (!data){
+                let x = $("<div>").addClass("text-danger")
+                let y = $("#loginTitle")
+                x.text("The username and/or password you entered does not exist. Please try again.")
+                y.append(x)
+            }
+            
+
+            } 
+    )
     })
 
     

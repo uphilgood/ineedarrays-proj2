@@ -130,13 +130,15 @@ let users = {
 
     },
 
-    login: (username, callback) => {
+    login: (username, callback, errFunct) => {
         userDb.findOne({
             where: {
                 username: username
             }
         }).then(function (data) {
-            callback(data)
+            if (data) {
+            callback(data)}
+            else {errFunct(data)}
         })
     }
 }
