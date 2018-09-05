@@ -69,12 +69,21 @@ body{
     font-family: 'Acme', sans-serif;
     color: #c1d4ee;
     margin: 0 auto;
+    width: 75%
  
   
 }
 
 #submitCreate {
     margin-bottom: 15px;
+}
+
+#email_sender {
+    width:100%
+}
+
+.input_large {
+    width: 100%
 }
 
 /* #refresh1 {
