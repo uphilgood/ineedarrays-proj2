@@ -96,7 +96,7 @@ let postings = {
         
     }, 
     findUserPosts: (username, callback) => {
-        sequelize.query("select p.post_title, p.post_body, c.community_name from posts p right join community c on c.community_id = p.community_id right join user u on u.username = p.post_email where p.post_email = :username",{ replacements: { username: username }, 
+        sequelize.query("select p.id, u.username, p.post_title, p.post_body, c.community_name from posts p right join community c on c.community_id = p.community_id right join user u on u.username = p.post_email where p.post_email = :username",{ replacements: { username: username }, 
             type: sequelize.QueryTypes.SELECT
         }).then(posts => {
             callback(posts)

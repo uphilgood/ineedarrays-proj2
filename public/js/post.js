@@ -103,28 +103,27 @@ $(function () {
 
     $(".delButton").on("click", function (event) {
         let postID = $(this).attr("value")
-        let communityId = $(this).attr("cid")
+        let user = $(this).attr("cid")
         $.ajax("/deletepost/" + postID, {
             type: "DELETE"
         }).then(function (data) {
-            location.replace("/community/" + communityId)
+            location.replace("/userposts/" + user)
         })
-
     })
 
-    // this will be the function that sends the email
-    $("#send_email").on("click", function () {
+    // // this will be the function that sends the email
+    // $("#send_email").on("click", function () {
 
-        // need to capture  to email which will be poster's email, subject, and text of the body in the email
-        $.ajax("/api/sendmail", {
-            type: "POST"
-        }).then(function (data) {
-            console.log(data)
-            if (data === "email sent") {
-                location.replace("/index")
-            } else {
-                alert("there was an error")
-            }
-        });
-    })
+    //     // need to capture  to email which will be poster's email, subject, and text of the body in the email
+    //     $.ajax("/api/sendmail", {
+    //         type: "POST"
+    //     }).then(function (data) {
+    //         console.log(data)
+    //         if (data === "email sent") {
+    //             location.replace("/index")
+    //         } else {
+    //             alert("there was an error")
+    //         }
+    //     });
+    // })
 })

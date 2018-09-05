@@ -36,16 +36,12 @@
     <div class="col-md-6">
         <h1 style="font-family: 'Heebo', sans-serif; color: white">Cars</h1>
           <div class="card" style="width: auto;">
-  {{!-- <img class="card-img-top" src="cars" alt="Card image cap"> --}}
   <div class="card-body">
     <h3 class="card-title">Recent Posts</h3>
     <p class="card-text">
       {{#each data.cars}}
       <ul class="list-group list-group-flush">
     <li class="list-group-item">{{this.post_title}} </li>
-    {{!-- <small class="text-muted">
-    <li class="list-group-item">{{this.post_body}} </li>
-    </small> --}}
     </ul>
     {{/each}}
     </p>
@@ -88,7 +84,6 @@
         <h1 style="font-family: 'Heebo', sans-serif; color: white">Housing</h1>
         
           <div class="card" style="width: auto;">
-  {{!-- <img class="card-img-top" src="housing" alt="Card image cap"> --}}
   <div class="card-body">
     <h3 class="card-title">Recent Posts</h3>
     <p class="card-text">
@@ -96,9 +91,6 @@
       {{#each data.housing}} 
       <ul class="list-group list-group-flush">
     <li class="list-group-item">{{this.post_title}} </li>
-    {{!-- <small class="text-muted">
-    <li class="list-group-item">{{this.post_body}} </li>
-    </small> --}}
     </ul>
     {{/each}}
     </p>
@@ -112,16 +104,12 @@
         <h1 style="font-family: 'Heebo', sans-serif; color: white">Jobs</h1>
         
           <div class="card" style="width: auto;">
-  {{!-- <img class="card-img-top" src="jobs" alt="Card image cap"> --}}
   <div class="card-body">
     <h3 class="card-title">Recent Posts</h3>
     <p class="card-text">
       {{#each data.jobs}} 
       <ul class="list-group list-group-flush">
     <li class="list-group-item">{{this.post_title}} </li>
-    {{!-- <small class="text-muted">
-    <li class="list-group-item">{{this.post_body}} </li>
-    </small> --}}
     </ul>
     {{/each}}
     </p>
