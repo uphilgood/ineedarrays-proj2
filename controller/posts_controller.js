@@ -87,7 +87,15 @@ router.post("/api/add_product/", (req, res) => {
 
 //login user
 router.post("/loginuser", (req, res) => {
-  auth(req, res)
+  community.users.login(req.body.username, data => {
+      let newPassword = data.password
+      bcrypt.compare(req.body.password, newPassword).then(resp => {
+        if (!resp) {
+          res.json("no user")
+        }
+        res.json(resp)
+      })
+  })
 })
 
 //user posts
@@ -129,18 +137,6 @@ router.delete("/deletepost/:id", function (req, res) {
 });
 
 
-function auth(req, res) {
-  community.users.login(req.body.username, data => {
-    if (!data) {
-      res.json("no user")
-    } else {
-      let newPassword = data.password
-      bcrypt.compare(req.body.password, newPassword).then(resp => {
-        res.json(resp)
-      })
-    }
-  })
-}
 
 
 

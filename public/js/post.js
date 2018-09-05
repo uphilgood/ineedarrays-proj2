@@ -54,18 +54,15 @@ $(function () {
             data: postInfo
         }).then(function (data) {
             console.log(data)
-            if (data === "no user"){
+            if (data === "no user") {
                 let x = $("<div>").addClass("text-danger")
                 let y = $("#loginTitle")
                 x.text("The username and/or password you entered does not exist. Please try again.")
                 y.append(x)
-            }
-            else {
+            } else {
                 location.replace("/index")
             }
-            
-            } 
-    )
+        })
     })
 
     //logging user into their posts page
@@ -81,25 +78,23 @@ $(function () {
             data: postInfo
         }).then(function (data) {
             console.log(data)
-            if (data === "no user"){
+            if (data === "no user") {
                 let x = $("<div>").addClass("text-danger")
                 let y = $("#loginTitle")
                 x.text("The username and/or password you entered does not exist. Please try again.")
                 y.append(x)
-            }
-            else {
+            } else {
                 $.ajax("/userposts/" + postInfo.username, {
                     type: "GET"
                 }).then(data => {
                     location.replace("/userposts/" + postInfo.username)
                 })
             }
-            
-            } 
-    )
+
+        })
     })
 
-    
+
 
     $(".community").on("click", function (event) {
         let communityId = $(this).attr("id")
@@ -108,8 +103,9 @@ $(function () {
         }).then(function (data) {
             console.log(data)
             location.replace("/community/" + communityId)
-        })});
-    
+        })
+    });
+
 
     $(".delButton").on("click", function (event) {
         let postID = $(this).attr("value")
@@ -118,13 +114,13 @@ $(function () {
             type: "DELETE"
         }).then(function (data) {
             location.replace("/community/" + communityId)
+        })
+
     })
-    
-})
 
     // this will be the function that sends the email
-    $("#send_email").on("click", function() {
-        
+    $("#send_email").on("click", function () {
+
         // need to capture  to email which will be poster's email, subject, and text of the body in the email
         $.ajax("/api/sendmail", {
             type: "POST"
