@@ -40,12 +40,13 @@
     <p class="card-text">
       {{#each data}}
       <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{this.community_name}} </li>
+    <li class="list-group-item"><strong>{{this.community_name}}</strong> </li>
     <li class="list-group-item">{{this.post_title}} </li>
     <li class="list-group-item">{{this.post_body}} </li>
     {{!-- <small class="text-muted">
     <li class="list-group-item">{{this.post_body}} </li>
     </small> --}}
+    <button class="delButton btn btn-primary" value="{{this.id}}" cid="{{this.username}}">Delete Post</button>
     </ul>
     {{/each}}
 
