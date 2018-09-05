@@ -1,28 +1,35 @@
-<div id="loginBR" class="container">
+
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
       <div id="gregsHeader">
-        <h1 id="gregsTitle">Gregslist</h1>
+        <br/>
+        <br/>
+        <h1 id="gregsTitle" style="font-family: 'Pacifico', cursive; font-size:130px; color: white; text-align: center">Gregslist</h1>
+        <br/>
+        <br/>
         <p id="sub">-- the most exclusive marketplace in the galaxy --</p>
-        <div class="container">
+        
         <div class="row">
-          <div class="col-md-5"></div>
-      <input id="refresh1" type="button" class="btn btn-primary" value="Login" onclick="window.location.reload()">
+          <div class="col-md-12 text-center"> 
+      <input id="refresh1" type="button" class="btn btn-primary" style="" value="Login">
       </div>
       </div>
+      
       <br/>
       </div>
     </div>
     </div>
-    </div>
+    
+
     
 
 {{!-- New Modal on page load --}}
 <script type="text/javascript">
-    $(window).on('load',function(){
-        $('#myModal').modal('show');
-    });
+
+    $("#refresh1").on("click", function() {
+      $('#myModal').modal('show');
+    })
 </script>
 <div class="col-md-12">
 <div class="modal fade" id="myModal" role="dialog">
@@ -46,11 +53,14 @@
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="userpassword" placeholder="Password">
             <div class="invalid-feedback">Forgot to enter your password</div>
+            <div class="danger" style="color: red"></div>
           </div>
               <div class="form py-4">
                 <button id="loginexistinguser" class="btn btn-primary">LOG INTO HOME</button>
                 <br/>
+                <br/>
                 <button id="loginexistingusertoposts" class="btn btn-success">LOG INTO MY POSTS</button>
+                <br/>
                 <br/>
                 <button class="btn btn-outline-secondary btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
               </div>

@@ -88,6 +88,9 @@ router.post("/api/add_product/", (req, res) => {
 //login user
 router.post("/loginuser", (req, res) => {
   community.users.login(req.body.username, data => {
+    if (!data) {
+      res.json("no user")
+    } else {
       let newPassword = data.password
       bcrypt.compare(req.body.password, newPassword).then(resp => {
         if (!resp) {
@@ -95,6 +98,7 @@ router.post("/loginuser", (req, res) => {
         }
         res.json(resp)
       })
+    }
   })
 })
 

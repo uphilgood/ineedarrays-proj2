@@ -55,10 +55,7 @@ $(function () {
         }).then(function (data) {
             console.log(data)
             if (data === "no user") {
-                let x = $("<div>").addClass("text-danger")
-                let y = $("#loginTitle")
-                x.text("The username and/or password you entered does not exist. Please try again.")
-                y.append(x)
+                $(".danger").html("The username and/or password you entered does not exist. Please try again.")
             } else {
                 location.replace("/index")
             }
@@ -79,10 +76,7 @@ $(function () {
         }).then(function (data) {
             console.log(data)
             if (data === "no user") {
-                let x = $("<div>").addClass("text-danger")
-                let y = $("#loginTitle")
-                x.text("The username and/or password you entered does not exist. Please try again.")
-                y.append(x)
+                $(".danger").html("The username and/or password you entered does not exist. Please try again.")
             } else {
                 $.ajax("/userposts/" + postInfo.username, {
                     type: "GET"
