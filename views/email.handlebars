@@ -28,13 +28,9 @@
 
 <div id="postContainer" class="container">
   <h2 id="postHeader">Send a message to the seller.</h2>
-  <p id="postHeader2">Fill in the following fields to email the seller via Gregslist</p>
+  <p id="postHeader2">Fill in the following fields to email the seller via Gregslist.  Please be sure to include your email in the body of the your message!</p>
  <div class="row justify-content-center">
   <form id="postForm">
-   <div class="form-group">
-      <label for="post_email">Your Email:</label>
-      <input type="email" class="form-control input-large" id="email_sender" placeholder="example@email.com" >
-    </div>
 
     <div  class="form-group">
       <label for="post_title">Subject:</label>
@@ -46,7 +42,7 @@
 </div>
 
   <div class="form-group">
- <button id="submitCreate" type="submit" class="btn btn-primary btn-block">SUBMIT</button>
+ <button id="send_email" type="submit" value= "{{data.post_email}}" class="btn btn-primary btn-block">Send</button>
 </div>
 
  </div>

@@ -101,7 +101,16 @@ let postings = {
         }).then(posts => {
             callback(posts)
         })
-    }
+    },
+    findPostUser: (username, callback) => { 
+        postDb.findOne({
+        where: {
+            post_email: username
+        }
+    }).then((user) => {
+        callback(user)
+    })
+}
 }
 
 let users = {

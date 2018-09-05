@@ -1,4 +1,7 @@
 $(function () {
+
+    let currentUserEmail
+
     $("#submitCreate").on("click", function () {
         event.preventDefault();
         let postInfo = {
@@ -89,13 +92,15 @@ $(function () {
     })
 
 
-    $("#sendEmail").on("click", (event) => {
-        let add = $(this).attr("id")
-        console.log(add)
-        $.ajax("/email/" + add , {
+    $(".sendEmail").on("click", (event) => {
+        let email = $(event.target).attr("value")
+        console.log(email)
+        currentUserEmail = email
+        console.log(currentUserEmail)
+        $.ajax("/email/" + email , {
             type: "GET"
         }).then((data) => {
-            location.replace("/email/" + add)
+            location.replace("/email/" + email)
         })
     })
 
@@ -122,18 +127,28 @@ $(function () {
     })
 
     // // this will be the function that sends the email
-    // $("#send_email").on("click", function () {
+    $("#send_email").on("click", function (event) {
+        event.preventDefault();
+        let emailInfo = {
+            from: 'info.gregslist@gmail.com',
+            to: $(event.target).attr("value"),
+            subject: $("#email_subject").val().trim(),
+            text: $("#email_body").val().trim(),
+        }
 
-    //     // need to capture  to email which will be poster's email, subject, and text of the body in the email
-    //     $.ajax("/api/sendmail", {
-    //         type: "POST"
-    //     }).then(function (data) {
-    //         console.log(data)
-    //         if (data === "email sent") {
-    //             location.replace("/index")
-    //         } else {
-    //             alert("there was an error")
-    //         }
-    //     });
-    // })
+        console.log(emailInfo)
+
+        // need to capture  to email which will be poster's email, subject, and text of the body in the email
+        $.ajax("/api/sendmail", {
+            type: "POST",
+            data: emailInfo
+        }).then(function (data) {
+            console.log(data)
+            if (data === "email sent") {
+                location.replace("/index")
+            } else {
+                alert("there was an error")
+            }
+        });
+    })
 })

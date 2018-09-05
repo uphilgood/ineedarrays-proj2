@@ -17,13 +17,13 @@ let transporter = nodemailer.createTransport({
 
 //send email
 router.post("/api/sendmail", (req, res) => {
-  var mailOptions = {
-    from: 'info.gregslist@gmail.com',
-    to: 'philgoodmusic@gmail.com', //articles owners email
-    subject: 'Sending Email using Node.js',
-    text: 'I am interested in this product!!'
-  };
-  transporter.sendMail(mailOptions, function (error, info) {
+  // var mailOptions = {
+  //   from: 'info.gregslist@gmail.com',
+  //   to: 'philgoodmusic@gmail.com', //articles owners email
+  //   subject: 'Sending Email using Node.js',
+  //   text: 'I am interested in this product!!'
+  // };
+  transporter.sendMail(req.body, function (error, info) {
     if (error) {
       console.log(error);
     } else {
@@ -34,11 +34,12 @@ router.post("/api/sendmail", (req, res) => {
 })
 
 
-router.get("/email/:add", (req, res) => {
-  console.log(req.params.add)
-  community.community.getAll(data => {
+router.get("/email/:email", (req, res) => {
+  console.log(req.params.email)
+  community.postings.findPostUser(req.params.email, user => {
+    console.log(user)
     res.render("email", {
-      data: data
+      data: user
     });
   });
 });
