@@ -19,7 +19,7 @@ let transporter = nodemailer.createTransport({
 router.post("/api/sendmail", (req, res) => {
   var mailOptions = {
     from: 'info.gregslist@gmail.com',
-    to: 'philgoodmusic@gmail.com',
+    to: 'philgoodmusic@gmail.com', //articles owners email
     subject: 'Sending Email using Node.js',
     text: 'I am interested in this product!!'
   };
@@ -87,21 +87,17 @@ router.post("/api/add_product/", (req, res) => {
 
 //login user
 router.post("/loginuser", (req, res) => {
-  community.users.login(req.body.username, data => {
-
-    let newPassword = data.password
-
-    bcrypt.compare(req.body.password, newPassword).then(resp => {
-      if (resp) {
-        res.json(resp)
-      }
-    })
-  },errorFunction => {
-    res.json(errorFunction)
-  })
+  auth(req, res)
 })
 
-
+//user posts
+router.get("/userposts/:username" , (req, res) => {
+  community.postings.findUserPosts(req.params.username, user => {
+    res.render("userposts", {
+      data: user
+    });
+  })
+})
 
 //sign up user
 router.post("/createuser", (req, res) => {
@@ -132,6 +128,19 @@ router.delete("/deletepost/:id", function (req, res) {
   })
 });
 
+
+function auth(req, res) {
+  community.users.login(req.body.username, data => {
+    if (!data) {
+      res.json("no user")
+    } else {
+      let newPassword = data.password
+      bcrypt.compare(req.body.password, newPassword).then(resp => {
+        res.json(resp)
+      })
+    }
+  })
+}
 
 
 
