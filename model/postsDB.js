@@ -90,8 +90,10 @@ let postings = {
             where: {
                 id: id
             }
+        }).then(data => {
+            callback(data);
         })
-        callback();
+        
     }
 }
 
@@ -136,9 +138,9 @@ let users = {
                 username: username
             }
         }).then(function (data) {
-            if (data) {
-            callback(data)}
-            else {errFunct(data)}
+            
+            callback(data)
+            
         })
     }
 }

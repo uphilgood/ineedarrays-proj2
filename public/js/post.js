@@ -54,16 +54,16 @@ $(function () {
             data: postInfo
         }).then(function (data) {
             console.log(data)
-            if (data){
-            location.replace("/index")}
-            else if (!data){
+            if (data === "no user"){
                 let x = $("<div>").addClass("text-danger")
                 let y = $("#loginTitle")
                 x.text("The username and/or password you entered does not exist. Please try again.")
                 y.append(x)
             }
+            else {
+                location.replace("/index")
+            }
             
-
             } 
     )
     })
@@ -92,17 +92,18 @@ $(function () {
 })
 
     // this will be the function that sends the email
-    // $("#send_email").on("click", function() {
-    //     // need to capture  to email which will be poster's email, subject, and text of the body in the email
-    //     $.ajax("/api/sendmail", {
-    //         type: "POST"
-    //     }).then(function (data) {
-    //         console.log(data)
-    //         if (data === "email sent") {
-    //             location.replace("/index")
-    //         } else {
-    //             alert("there was an error")
-    //         }
-    //     });
-    // })
+    $("#send_email").on("click", function() {
+        
+        // need to capture  to email which will be poster's email, subject, and text of the body in the email
+        $.ajax("/api/sendmail", {
+            type: "POST"
+        }).then(function (data) {
+            console.log(data)
+            if (data === "email sent") {
+                location.replace("/index")
+            } else {
+                alert("there was an error")
+            }
+        });
+    })
 })
