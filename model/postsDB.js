@@ -1,5 +1,13 @@
-let Sequelize = require("sequelize");
-let sequelize = require("../config/connection")
+var Sequelize = require('sequelize');
+var env       = process.env.NODE_ENV || 'development';
+var config    = require(__dirname + '/../config/connection.js')[env];
+
+
+if (config.use_env_variable) {
+  var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
 let communityDb = sequelize.define("community", {
     community_id: {
@@ -76,8 +84,18 @@ let postings = {
         }).then(data =>
             callback(data)
         )
+    },
+    deletePost: (id, callback) => {
+        postDb.destroy({
+            where: {
+                id: id
+            }
+        })
+        callback();
     }
 }
+
+
 
 let users = {
     findUser: (username, callback) => { 
@@ -112,51 +130,19 @@ let users = {
 
     },
 
-    login: (username, callback) => {
+    login: (username, callback, errFunct) => {
         userDb.findOne({
             where: {
                 username: username
             }
         }).then(function (data) {
-            callback(data)
+            if (data) {
+            callback(data)}
+            else {errFunct(data)}
         })
     }
 }
 
-
-
-// let orm = {
-//     allCharacters: function (cb) {
-//         db.findAll({}).then(function (results) {
-//             cb(results)
-//         })
-//     },
-
-//     searchCharacter: function (name, cb) {
-//         db.findAll({
-//             where: {
-//                 routeName: name
-//             }
-//         }).then(function (results) {
-//             cb(results)
-//         })
-
-//     },
-
-//     addCharacter: function (character, cb) {
-//         var routeName = character.name.replace(/\s+/g, "").toLowerCase();
-//         console.log(routeName);
-//         db.upsert({
-//             routeName: routeName,
-//             name: character.name,
-//             role: character.name,
-//             age: character.age,
-//             forcePoints: character.forcePoints
-//         }).then(function (results) {
-//             cb(results)
-//         });
-//     }
-// }
 
 
 

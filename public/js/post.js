@@ -53,20 +53,43 @@ $(function () {
             type: "POST",
             data: postInfo
         }).then(function (data) {
-            location.replace("/index")
-        });
+            console.log(data)
+            if (data){
+            location.replace("/index")}
+            else if (!data){
+                let x = $("<div>").addClass("text-danger")
+                let y = $("#loginTitle")
+                x.text("The username and/or password you entered does not exist. Please try again.")
+                y.append(x)
+            }
+            
+
+            } 
+    )
     })
+
+    
 
     $(".community").on("click", function (event) {
         let communityId = $(this).attr("id")
-        console.log(communityId)
         $.ajax("/community/" + communityId, {
             type: "GET"
         }).then(function (data) {
             console.log(data)
             location.replace("/community/" + communityId)
-        });
+        })});
+    
+
+    $(".delButton").on("click", function (event) {
+        let postID = $(this).attr("value")
+        let communityId = $(this).attr("cid")
+        $.ajax("/deletepost/" + postID, {
+            type: "DELETE"
+        }).then(function (data) {
+            location.replace("/community/" + communityId)
     })
+    
+})
 
     // this will be the function that sends the email
     // $("#send_email").on("click", function() {
