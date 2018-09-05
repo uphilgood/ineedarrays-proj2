@@ -89,6 +89,16 @@ $(function () {
     })
 
 
+    $("#sendEmail").on("click", (event) => {
+        let add = $(this).attr("id")
+        console.log(add)
+        $.ajax("/email/" + add , {
+            type: "GET"
+        }).then((data) => {
+            location.replace("/email/" + add)
+        })
+    })
+
 
     $(".community").on("click", function (event) {
         let communityId = $(this).attr("id")

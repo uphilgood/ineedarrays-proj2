@@ -34,6 +34,15 @@ router.post("/api/sendmail", (req, res) => {
 })
 
 
+router.get("/email/:add", (req, res) => {
+  console.log(req.params.add)
+  community.community.getAll(data => {
+    res.render("email", {
+      data: data
+    });
+  });
+});
+
 //login page
 router.get("/", (req, res) => {
   community.community.getAll(data => {
