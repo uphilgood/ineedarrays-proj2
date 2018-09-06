@@ -13,7 +13,7 @@ var config    = require(__dirname + '/../config/connection.js')[env];
 
 if (config.use_env_variable) {
 
-let transporter = nodemailer.createTransport({
+transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.transporter_email,
