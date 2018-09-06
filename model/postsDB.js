@@ -2,6 +2,16 @@ var Sequelize = require('sequelize');
 var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/connection.js')[env];
 
+require("dotenv").config();
+function AuthEmail (user,pass) {
+  this.user = user;
+  this.pass = pass
+}
+let auth = new AuthEmail (process.env.transporter_email,process.env.transporter_pass) 
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth
+})
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable], config);
@@ -170,6 +180,8 @@ module.exports = {
     communityDb: communityDb,
     community: community,
     postings: postings,
-    users: users
+    users: users,
+    auth: auth,
+    transporter:transporter
 };
 // module.exports = orm
