@@ -6,23 +6,19 @@ const bcrypt = require('bcrypt');
 let router = express.Router();
 const saltRound = 10
 let nodemailer = require("nodemailer")
+require("dotenv").config();
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'info.gregslist@gmail.com',
-    pass: 'ineedarrays2'
+    user: process.env.transporter_email,
+    pass: process.env.transport_pass
   }
 });
 
 //send email
 router.post("/api/sendmail", (req, res) => {
-  // var mailOptions = {
-  //   from: 'info.gregslist@gmail.com',
-  //   to: 'philgoodmusic@gmail.com', //articles owners email
-  //   subject: 'Sending Email using Node.js',
-  //   text: 'I am interested in this product!!'
-  // };
+
   transporter.sendMail(req.body, function (error, info) {
     if (error) {
       console.log(error);
