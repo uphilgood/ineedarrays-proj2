@@ -7,6 +7,10 @@ let router = express.Router();
 const saltRound = 10
 let nodemailer = require("nodemailer")
 require("dotenv").config();
+var config    = require(__dirname + '/../config/connection.js')[env];
+
+
+if (config.use_env_variable) {
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -14,7 +18,8 @@ let transporter = nodemailer.createTransport({
     user: process.env.transporter_email,
     pass: process.env.transport_pass
   }
-});
+});}
+
 
 console.log(process.env.transporter_email)
 
