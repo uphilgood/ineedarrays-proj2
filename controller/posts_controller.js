@@ -11,15 +11,17 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/connection.js')[env];
 
 
-if (config.use_env_variable) {
-
-transporter = nodemailer.createTransport({
+function AuthEmail (user,pass) {
+  this.user = user;
+  this.pass = pass
+}
+let auth = new AuthEmail (process.env.transporter_email,process.env.transporter_pass) 
+let transporter = nodemailer.createTransport({
+  
   service: 'gmail',
-  auth: {
-    user: process.env[config.transport_email],
-    pass: process.env[config.transport_pass]
-  }
-});}
+  auth
+    
+})
 
 
 
