@@ -16,8 +16,8 @@ if (config.use_env_variable) {
 transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: transporter_email,
-    pass: transport_pass
+    user: process.env[config.transport_email],
+    pass: process.env[config.transport_pass]
   }
 });}
 
