@@ -16,6 +16,8 @@ let transporter = nodemailer.createTransport({
   }
 });
 
+console.log(process.env.transporter_email)
+
 //send email
 router.post("/api/sendmail", (req, res) => {
 
