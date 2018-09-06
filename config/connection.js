@@ -24,14 +24,16 @@ require("dotenv").config();
 module.exports = {
   "development": {
     username: "root",
-    password: "Family123",
+    password: "12345678",
     database: "marketplace_db",
     host: "localhost",
     "dialect": "mysql"
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "transport_email": "transport_email",
+    "transport_pass":"transport_pass"
   }
 }
 
