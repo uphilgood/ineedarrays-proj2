@@ -7,6 +7,7 @@ let router = express.Router();
 const saltRound = 10
 let nodemailer = require("nodemailer")
 require("dotenv").config();
+var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/connection.js')[env];
 
 
@@ -21,7 +22,7 @@ let transporter = nodemailer.createTransport({
 });}
 
 
-console.log(process.env.transporter_email)
+
 
 //send email
 router.post("/api/sendmail", (req, res) => {
