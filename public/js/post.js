@@ -93,14 +93,12 @@ $(function () {
 
 
     $(".sendEmail").on("click", (event) => {
-        let email = $(event.target).attr("value")
-        console.log(email)
-        currentUserEmail = email
-        console.log(currentUserEmail)
-        $.ajax("/email/" + email , {
+        let userId = $(event.target).attr("value")
+        console.log(userId)
+        $.ajax("/email/" + userId , {
             type: "GET"
         }).then((data) => {
-            location.replace("/email/" + email)
+            location.replace("/email/" + userId)
         })
     })
 

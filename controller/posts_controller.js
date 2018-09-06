@@ -34,9 +34,9 @@ router.post("/api/sendmail", (req, res) => {
 })
 
 
-router.get("/email/:email", (req, res) => {
-  console.log(req.params.email)
-  community.postings.findPostUser(req.params.email, user => {
+router.get("/email/:userId", (req, res) => {
+  console.log(req.params.userId)
+  community.postings.findPostUser(req.params.userId, user => {
     console.log(user)
     res.render("email", {
       data: user
