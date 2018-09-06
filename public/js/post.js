@@ -93,7 +93,7 @@ $(function () {
 
 
     $(".sendEmail").on("click", (event) => {
-        let userId = $(event.target).attr("id")
+        let userId = $(event.target).attr("value")
         console.log(userId)
         $.ajax("/email/" + userId , {
             type: "GET"
