@@ -7,6 +7,17 @@ let router = express.Router();
 const saltRound = 10
 let nodemailer = require("nodemailer")
 
+require("dotenv").config();
+function AuthEmail (user,pass) {
+  this.user = user;
+  this.pass = pass
+}
+let auth = new AuthEmail (process.env.transporter_email,process.env.transporter_pass) 
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth
+})
+
 
 
 
@@ -14,7 +25,7 @@ let nodemailer = require("nodemailer")
 //send email
 router.post("/api/sendmail", (req, res) => {
 
-  community.transporter.sendMail(req.body, function (error, info) {
+  transporter.sendMail(req.body, function (error, info) {
     if (error) {
       console.log(error);
     } else {
