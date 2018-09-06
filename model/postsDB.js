@@ -170,7 +170,7 @@ module.exports = {
     communityDb: communityDb,
     community: community,
     postings: postings,
-    users: users,
+    users: users
     
 };
 // module.exports = orm
